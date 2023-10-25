@@ -926,4 +926,4 @@ def astar (robot, box_list, obstacles_list, storage_list, size):
   return solution
 
 if __name__ == '__main__':   
-    app.run(debug=True)
+    app.run(debug=False)
