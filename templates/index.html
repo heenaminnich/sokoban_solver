@@ -1,0 +1,124 @@
+<!DOCTYPE HTML>
+<!--
+	Story by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Sokoban Solver</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="{{ url_for('static', filename= 'css/main.css') }}" />
+		<noscript><link rel="stylesheet" href="{{ url_for('static', filename= 'css/noscript.css') }}" /></noscript>
+        <script type="text/javascript">// <![CDATA[
+            function loading(){
+                $("#loading").show();
+                $("#content").hide();       
+            }
+        // ]]>
+        </script>
+
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper" class="divided">
+				<!-- One -->
+					<section class="banner style1 orient-left content-align-left image-position-right fullscreen onload-image-fade-in onload-content-fade-right">
+						<div class="content">
+							<h1>Sokoban Solver</h1>
+							<p class="major">To begin, please attach a text file containing the puzzle (see instructions below for file requirements). Then select the algorithm to use for solving the puzzle.</p>
+                            <p>Note: If it takes too long to run, then it may be that it is a dificult puzzle and the solution method may be taking some time to find the solution. Otherwise, there may not be a solution. Please try uploading a different puzzle.</p>
+                            <div 
+                                id="loading">
+                                
+                                <img src="{{ url_for('static', filename= 'images/loading.gif') }}" alt="Be patient..." />
+
+                            </div>
+                            {% with messages = get_flashed_messages() %}
+                            {% if messages %}
+                            <h2>Error:</h2>
+                            <ul style="list-style-type:none;">
+                                {% for message in messages %}
+                                <li><p style="color:red;">{{ message }}</p></li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+                            {% endwith %}
+                            <br>
+
+							<!-- <ul class="actions stacked"> -->
+								<!-- <li><a href="#first" class="button big wide smooth-scroll-middle">Get Started</a></li> -->
+                            <form action = "/success" method = "post" enctype="multipart/form-data">   
+                                <input type="file" name="file" accept=".txt" />
+                                <br/>
+                                <br/>
+                                <select name="solver_method" id="solver_method">
+                                    <option value="bfs">Breadth First Search</option>
+                                    <option value="dfs">Depth First Search</option>
+                                    <option value="greedy">Greedy</option>
+                                    <option value="astar">A Star</option>
+                                </select>
+                                <br/>
+                                <input type = "submit" value="Upload" onclick="loading();">   
+                            </form>
+                            
+							<!--</ul> -->
+						</div>
+					</section>
+
+				<!-- Six -->
+					<section class="wrapper style1 align-center">
+						<div class="inner">
+							<h2>Instructions</h2>
+                            <h3>Text File</h3>
+							<p>
+                                The text file must have the ".txt" extension. Within the text file, use the following symbols to indicate the starting configuration:
+                                <br/>
+                                <br/>
+                                "R" - starting position of the robot
+                                <br/>
+                                "S" - location of the storage units
+                                <br/>
+                                "O" - locations of a single obstacle (wall)
+                                <br/>
+                                "." - indicates that a robot and storage unit are in the same location
+                                <br/>
+                                " " - empty space where robot could possibly move (not a storage or an obstacle and does not contain currently contain a robot or a box)
+                                <br/>
+                                "\n" - line break, place at the end of each line
+                                <br/>
+                                <br/>
+                                <br/>
+                                Here is an example of what a text file would contain:
+                                <br/>
+                                <br/>
+                                <img src="{{ url_for('static', filename= 'images/example_puzzle_input.jpg') }}" alt="" />
+                            </p>
+                            <h3>Solver Methods</h3>
+							<p>
+                                There are four solver methods available to pick:
+                                <br/>
+                                <br/>
+                                "Breadth First Search" (Default)
+                                <br/>
+                                "Depth First Search"
+                                <br/>
+                                "Greedy"
+                                <br/>
+                                "A Star"
+                            </p>
+						</div>
+					</section>
+			</div>
+
+		<!-- Scripts -->
+			<script src="{{ url_for('static', filename= 'js/jquery.min.js') }}"></script>
+			<script src="{{ url_for('static', filename= 'js/jquery.scrollex.min.js') }}"></script>
+			<script src="{{ url_for('static', filename= 'js/jquery.scrolly.min.js') }}"></script>
+			<script src="{{ url_for('static', filename= 'js/browser.min.js') }}"></script>
+			<script src="{{ url_for('static', filename= 'js/breakpoints.min.js') }}"></script>
+			<script src="{{ url_for('static', filename= 'js/util.js') }}"></script>
+			<script src="{{ url_for('static', filename= 'js/main.js') }}"></script>
+	</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<!--
+	Story by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Sokoban Solver</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="{{ url_for('static', filename= 'css/main.css') }}" />
+		<noscript><link rel="stylesheet" href="{{ url_for('static', filename= 'css/noscript.css') }}" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper" class="divided">
+
+				<!-- Five -->
+					<section class="wrapper style1 align-center">
+						<div class="inner">
+							<h2>Solution</h2>
+							<p><b>Time to Solve: {{time}}</b></p>
+                            <p><b style="color:green;">Solution: {{solution}}</b></p>
+                            <h3>Legend</h2>
+                            <p>
+                                Solution to the Sokoban puzzle will be givin in the form of a list containing the directions the robot move in to get all boxes to their storage position. The directions are indicated in the following manner:
+                                <br/>
+                                <br/>
+                                "L" - Left
+                                <br/>
+                                "R" - Right
+                                <br/>
+                                "D" - Down
+                                <br/>
+                                "U" - Up
+                            </p>
+                            <a href="{{ url_for('index') }}" class="button big wide smooth-scroll-middle">Back</a>
+						</div>
+					</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="{{ url_for('static', filename= 'js/jquery.min.js') }}"></script>
+			<script src="{{ url_for('static', filename= 'js/jquery.scrollex.min.js') }}"></script>
+			<script src="{{ url_for('static', filename= 'js/jquery.scrolly.min.js') }}"></script>
+			<script src="{{ url_for('static', filename= 'js/browser.min.js') }}"></script>
+			<script src="{{ url_for('static', filename= 'js/breakpoints.min.js') }}"></script>
+			<script src="{{ url_for('static', filename= 'js/util.js') }}"></script>
+			<script src="{{ url_for('static', filename= 'js/main.js') }}"></script>
+	</body>
+</html>

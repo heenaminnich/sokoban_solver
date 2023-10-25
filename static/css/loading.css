@@ -1,0 +1,7 @@
+#loading img { display: none; }
+
+#loading.currently-loading img { 
+    display: block; 
+    width: 100%;
+    height: 100%;
+}
